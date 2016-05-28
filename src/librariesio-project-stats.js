@@ -1,6 +1,6 @@
 var PACKAGE_TEMPLATE = '\
 <div>\
-  <h1><a href="{{homepage}}">{{name}}</a></h1>\
+  <h1><a href="{{repository_url}}">{{repository_url_trimmed}}</a></h1>\
   <ul>\
     <li>\
       <label>Stars</label>\
@@ -43,16 +43,16 @@ Prototype.createdCallback = function() {
   var packageName = this.getAttribute('package-name');
   
   var projectUrl = PROJECT_DETAILS_URL
-                    .replace(':package-platform', packagePlatform)
-                    .replace(':package-name', packageName);
+                    .replace(':package-platform', encodeURIComponent(packagePlatform))
+                    .replace(':package-name', encodeURIComponent(packageName));
                     
   var dependentsUrl = PROJECT_DEPENDENTS
-                      .replace(':package-platform', packagePlatform)
-                      .replace(':package-name', packageName);
+                      .replace(':package-platform', encodeURIComponent(packagePlatform))
+                      .replace(':package-name', encodeURIComponent(packageName));
                     
   var dependentReposUrl = PROJECT_DEPENDENT_REPOS
-                        .replace(':package-platform', packagePlatform)
-                        .replace(':package-name', packageName);
+                        .replace(':package-platform', encodeURIComponent(packagePlatform))
+                        .replace(':package-name', encodeURIComponent(packageName));
 
   var projectRequest = fetch(projectUrl);
   var dependentsRequest = fetch(dependentsUrl);
@@ -89,6 +89,8 @@ Prototype._renderResults = function(values) {
     var regex = new RegExp('{{' + key + '}}', 'g');
     html = html.replace(regex, projectData[key]);
   });
+  
+  html = html.replace('{{repository_url_trimmed}}', projectData.repository_url.replace('https://', ''));
   
   html = html.replace('{{latest_version}}', projectData.versions[projectData.versions.length-1].number);
   html = html.replace('{{version_count}}', projectData.versions.length);

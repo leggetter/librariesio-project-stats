@@ -1,31 +1,39 @@
-<script src="./bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-<script src="../src/librariesio-project-stats.js"></script>
-
+<body>
 <style>
   librariesio-project-stats {
     float: left;
     margin-left: 30px;
     font-family: monospace;
     font-size: 10pt;
+    width: 45%;
   }
 </style>
+  
+<script src="./bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+<script src="../src/librariesio-project-stats.js"></script>
+<script>
+fetch('https://libraries.io/api/github/nexmo/projects')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(projectsJson) {
+    console.log(projectsJson);
+    
+    var appendTo = document.getElementById('stats');
+    appendTo.innerHTML = '';
+    
+    projectsJson.forEach(function(project) {
+      var el = document.createElement('librariesio-project-stats');
+      el.setAttribute('package-platform', project.platform);
+      el.setAttribute('package-name', project.name);
+      appendTo.appendChild(el);
+    })
+  })
+  .catch(function(ex) {
+    console.error(ex);
+  });
+</script>
 
-<librariesio-project-stats
-  package-platform="npm" 
-  package-name="nexmo">
-</librariesio-project-stats>
+<div id="stats">Loading...</div>
 
-<librariesio-project-stats
-  package-platform="npm" 
-  package-name="nexmo-cli">
-</librariesio-project-stats>
-
-<librariesio-project-stats
-  package-platform="Rubygems" 
-  package-name="nexmo">
-</librariesio-project-stats>
-
-<librariesio-project-stats
-  package-platform="packagist" 
-  package-name="nexmo/client">
-</librariesio-project-stats>
+</body>

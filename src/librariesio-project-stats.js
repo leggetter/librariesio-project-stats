@@ -1,10 +1,10 @@
 var PACKAGE_TEMPLATE = '\
 <div>\
-  <h1><a href="{{repository_url}}">{{repository_url_trimmed}}</a></h1>\
+  <h1><a href="{{repository_url}}">{{platform}}/{{name}}</a></h1>\
   <ul>\
     <li>\
       <label>Stars</label>\
-      <span>{{stars}}?</span>\
+      <span>{{stars}}</span>\
     </li>\
     <li>\
       <label>Source Rank</label>\
@@ -38,7 +38,7 @@ var PROJECT_DETAILS_URL = 'https://libraries.io/api/:package-platform/:package-n
 var PROJECT_DEPENDENTS = 'https://libraries.io/api/:package-platform/:package-name/dependents';
 var PROJECT_DEPENDENT_REPOS = 'https://libraries.io/api/:package-platform/:package-name/dependent_repositories';
 
-Prototype.createdCallback = function() {
+Prototype.attachedCallback = function() {
   var packagePlatform = this.getAttribute('package-platform');
   var packageName = this.getAttribute('package-name');
   

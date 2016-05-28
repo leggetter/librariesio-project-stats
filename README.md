@@ -1,4 +1,4 @@
-# Project Stats Web Component via libraries.io data
+# Project Stats Web Component via [libraries.io](https://libraries.io) data
 
 ![Example Project Stats](./example/example.png)
 

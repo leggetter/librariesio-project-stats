@@ -3,7 +3,7 @@
   "description": "",
   "main": "",
   "keywords": [
-    "librariesio",
+    "libraries.io",
     "web",
     "components"
   ],
@@ -11,8 +11,7 @@
     "phil@leggetter.co.uk"
   ],
   "license": "MIT",
-  "homepage": "",
-  "private": true,
+  "homepage": "https://github.com/leggetter/librariesio-project-stats",
   "ignore": [
     "**/.*",
     "node_modules",

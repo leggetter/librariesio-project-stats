@@ -7,7 +7,7 @@
 Install dependencies:
 
 ```sh
-bower install https://github.com/leggetter/librariesio-project-stats
+bower install https://github.com/leggetter/librariesio-project-stats.git
 ```
 
 Add dependencies to the page and instantiate `librariesio-project-stats` components:

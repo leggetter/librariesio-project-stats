@@ -78,7 +78,7 @@ Prototype._handleData = function(results) {
 };
 
 Prototype._renderResults = function(values) {
-  console.log(values);
+  // console.log(values);
   
   var projectData = values[0];
   var dependentData = values[1];

@@ -26,7 +26,7 @@ Add dependencies to the page and instantiate `librariesio-project-stats` compone
 
 ## Example
 
-See [example/index.html].
+See [example/index.html](./example/index.html).
 
 ## License
 
